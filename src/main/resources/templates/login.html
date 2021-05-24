@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/template}"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Вхід</title>
+</head>
+<body style="background-color: cornsilk">
+    <div layout:fragment="content" class="row">
+        <div class="col">
+            <div class="mx-auto mt-5 mb-4" style="width: max-content">
+                <h2>Вас вітає YevhenAudit!</h2>
+            </div>
+            <div class="mx-auto" style="width: max-content">
+                <p th:if="${param.error}" class="alert alert-danger pt-1 pb-1">Введено некореткне ім'я користувача або пароль!</p>
+            </div>
+            <div class="card mx-auto p-3" style="width: max-content">
+                <div class="mx-auto" style="width: max-content">
+                    <form th:action="@{/login}" method="POST">
+                        <label for="username" class="form-label">Ім'я користувача:</label>
+                        <input type="text" name="username" size="25" id="username" class="form-control" />
+
+                        <label for="password" class="form-label">Пароль:</label>
+                        <input type="password" name="password" size="25" id="password" class="form-control" />
+
+                        <input type="submit" value="Вхід" class="btn btn-primary mt-3" style="width: 100px"/>
+                        <a th:href="@{/users/create}" class="float-end pt-4">Зареєструватися</a>
+
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                    </form>
+                </div>
+            </div>
+            <div class="mx-auto mt-4" style="width: max-content">
+                <p>username: <span class="fst-italic">yevhen@mail.com</span><br>password: <span class="fst-italic">1111</span></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

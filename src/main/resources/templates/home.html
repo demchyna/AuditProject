@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/template}"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+    <div layout:fragment="content" class="row">
+        <div class="col">
+            <div class="mx-auto mt-4 mb-5" style="width: max-content">
+                <h2>Вас вітає YevhenAudit!</h2>
+            </div>
+            <div class="mx-auto mb-5" style="width: max-content">
+                <a th:href="@{|/reports/all/users/${#authentication.details.id}|}"><button type="button" class="btn btn-primary btn-box">
+                    Переглянути розрахунки
+                </button></a>
+                <a th:href="@{|/reports/create/users/${#authentication.details.id}|}"><button type="button" class="btn btn-success btn-box">
+                    Визначити клас енергоефективності
+                </button></a>
+            </div>
+            <hr>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/template}"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Реєстрація</title>
+</head>
+
+<body style="background-color: cornsilk">
+    <div layout:fragment="content" class="row">
+        <div class="col">
+            <div class="mx-auto mt-5 mb-4" style="width: max-content">
+                <h2>Реєстрація нового користувача</h2>
+            </div>
+            <div class="card mx-auto p-3" style="width: max-content">
+                <div class="mx-auto" style="width: 300px">
+                    <form th:action="@{/users/create}" th:object="${user}" method="post">
+                        <label for="first-name" class="form-label">Ім'я:</label>
+                        <input type="text" th:field="*{firstName}" size="25" id="first-name" class="form-control" />
+                        <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="lh-sm" style="font-size: x-small; color: red"/>
+
+                        <label for="last-name" class="form-label">Прізвище:</label>
+                        <input type="text" th:field="*{lastName}" size="25" id="last-name" class="form-control" />
+                        <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="lh-sm" style="font-size: x-small; color: red"/>
+
+                        <label for="email" class="form-label">E-mail:</label>
+                        <input type="text" th:field="*{email}" size="25" id="email" class="form-control" />
+                        <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="lh-sm" style="font-size: x-small; color: red"/>
+
+                        <label for="password" class="form-label">Пароль:</label>
+                        <input type="password" th:field="*{password}" size="25" id="password" class="form-control" />
+                        <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="lh-sm" style="font-size: x-small; color: red"/>
+
+                        <input type="submit" value="Зареєструвати" class="btn btn-primary mt-3" />
+                        <a th:href="@{/login}" class="float-end pt-4">Вже маєте акаунт?</a>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<!--<body>-->
+<!--    <div layout:fragment="content" style="margin: 0 auto; width: max-content">-->
+<!--        <h2>Реєстрація нового користувача</h2>-->
+<!--        <form th:action="@{/users/create}" th:object="${user}" method="post">-->
+<!--            <table>-->
+<!--                <tr>-->
+<!--                    <td>-->
+<!--                        <label for="first-name">Ім'я:</label>-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        <input type="text" th:field="*{firstName}" id="first-name" />-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td>-->
+<!--                        <label for="last-name">Прізвище:</label>-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        <input type="text" th:field="*{lastName}" id="last-name" />-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td>-->
+<!--                        <label for="email">E-mail:</label>-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        <input type="text" th:field="*{email}" id="email" />-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td>-->
+<!--                        <label for="password">Пароль:</label>-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        <input type="password" th:field="*{password}" id="password" />-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td colspan="2">-->
+<!--                        <input type="submit" value="Зареєструвати" />-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--            </table>-->
+<!--        </form>-->
+<!--    </div>-->
+<!--</body>-->
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/template}"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Значення енергоефективності</title>
+</head>
+<body>
+
+    <div layout:fragment="content" class="row">
+        <div class="col">
+            <div class="mx-auto mt-5 mb-5" style="width: max-content">
+                <h2 th:text="${'Ваш розрахунок, ' + user.firstName}"></h2>
+            </div>
+            <div class="mx-auto" style="width: max-content">
+                <table style="margin-bottom: 30px;">
+                    <tr>
+                        <td style="padding-right: 10px">
+                            <label for="address" class="col-form-label">Адреса: </label>
+                        </td>
+                        <td style="width: 100%;">
+                            <input type="text" th:value="${report.address}" readonly class="form-control" id="address" />
+                        </td>
+                    </tr>
+                </table>
+                <hr>
+                <table class="table">
+                    <tr class="text-center">
+                        <th>Показник</th>
+                        <th>Значення, кВт &Cross; год / м&sup2;</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>Питома енергопотреба на опалення, охолодження, гаряче водопостачання</span>
+                        </td>
+                        <td class="text-center">
+                            <span th:text="${#numbers.formatDecimal(report.indicator1, 1, 2)}"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>Питоме енергоспоживання при опаленні</span>
+                        </td>
+                        <td class="text-center">
+                            <span th:text="${#numbers.formatDecimal(report.indicator2, 1, 2)}"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>Питоме енергоспоживання при охолодженні</span>
+                        </td>
+                        <td class="text-center">
+                            <span th:text="${#numbers.formatDecimal(report.indicator3, 1, 2)}"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>Питоме енергоспоживання при гарячому водопостачанні</span>
+                        </td>
+                        <td class="text-center">
+                            <span th:text="${#numbers.formatDecimal(report.indicator4, 1, 2)}"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>Питоме енергоспоживання системи вентиляції</span>
+                        </td>
+                        <td class="text-center">
+                            <span th:text="${#numbers.formatDecimal(report.indicator5, 1, 2)}"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>Питоме енергоспоживання при освітленні</span>
+                        </td>
+                        <td class="text-center">
+                            <span th:text="${#numbers.formatDecimal(report.indicator6, 1, 2)}"></span>
+                        </td>
+                    </tr>
+                </table>
+
+                <table style="margin-top: 30px; width: 100%;">
+                    <tr>
+                        <td style="width: 74%; padding-left: 10px;">
+                            <p class="fw-bold">Клас енергетичної ефективності: </p>
+                        </td>
+                        <td style="width: 26%;">
+                            <p th:text="${report.energyEfficiency}" class="text-center fw-bold" />
+                        </td>
+                    </tr>
+                </table>
+                <hr>
+                <a th:href="@{|/reports/create/users/${#authentication.details.id}|}"><button type="button" class="btn btn-success">
+                    Зробити ще один розрахунок
+                </button></a>
+                <span style="padding: 0 10px 0 10px;"></span>
+                <a th:href="@{|/reports/all/users/${#authentication.details.id}|}"><button type="button" class="btn btn-primary">
+                    Повернутися до приску аудитів
+                </button></a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

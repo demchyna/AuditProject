@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/template}"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Дані користувача</title>
+</head>
+<body>
+    <div layout:fragment="content" class="row">
+        <div class="col">
+            <div class="mx-auto mt-5 mb-5" style="width: max-content">
+                <h2>Дані користувача</h2>
+            </div>
+            <div class="mx-auto" style="width: max-content">
+                <table class="table">
+                    <tr>
+                        <td>Ім'я:</td>
+                        <td>
+                            <b th:text="${user.firstName}"></b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Прізвище:</td>
+                        <td>
+                            <b th:text="${user.lastName}"></b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>E-mail:</td>
+                        <td>
+                            <b th:text="${user.email}"></b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Роль: </td>
+                        <td>
+                            <b th:text="${user.role.name}"></b>
+                        </td>
+                    </tr>
+                </table>
+                <hr>
+                <div th:if="${#authorization.expression('hasAuthority(''ADMIN'')')
+                    or #authorization.expression('hasAuthority(''USER'')') and #authentication.details.id == user.id}">
+                    <a th:href="@{|/users/${user.id}/update|}"><button type="button" class="btn btn-success">
+                        Редагувати
+                    </button></a>
+                    <span style="padding: 0 5px 0 5px;"></span>
+                    <a th:href="@{|/users/${user.id}/delete|}"><button type="button" class="btn btn-danger">
+                        Видалити
+                    </button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
