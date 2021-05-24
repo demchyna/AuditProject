@@ -16,16 +16,16 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
-DROP DATABASE yevhen_audit;
+DROP DATABASE d5t2nr4j5p8brc;
 --
 -- TOC entry 2934 (class 1262 OID 17162)
 -- Name: todolist; Type: DATABASE; Schema: -; Owner: -
 --
 
-CREATE DATABASE yevhen_audit WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'Ukrainian_Ukraine.1251' LC_CTYPE = 'Ukrainian_Ukraine.1251';
+CREATE DATABASE d5t2nr4j5p8brc WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'Ukrainian_Ukraine.1251' LC_CTYPE = 'Ukrainian_Ukraine.1251';
 
 
-\connect yevhen_audit
+\connect d5t2nr4j5p8brc
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
