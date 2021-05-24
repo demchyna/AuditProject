@@ -1,1 +1,0 @@
-INSERT INTO public.reports (id, address, energy_efficiency, indicator_1, indicator_2, indicator_3, indicator_4, indicator_5, indicator_6, owner_id) VALUES (1, 'Міцкевича 3', 'G', 123, 134.57, 8.37, 23.310000000000002, 0, 14.469999999999999, 4);
